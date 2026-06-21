@@ -57,7 +57,7 @@ st.write("___")
 st.subheader("📈 Тренд сна")
 
 fig = px.line(df, x='date', y='sleep', color = 'name', markers=True)
-fig.add_hline(y=7.4)
+fig.add_hline(y=7)
 
 st.plotly_chart(fig, width='stretch')
 
@@ -92,7 +92,7 @@ for name in ['Юля', 'Даша']:
 forecast = pd.DataFrame(forecast, columns=['day', 'name', 'sleep'])
 
 fig3 = px.line(forecast, x='day', y='sleep', color='name', markers=True)
-fig3.add_hline(y=8)
+fig3.add_hline(y=7)
 
 st.plotly_chart(fig3, width='stretch')
 
