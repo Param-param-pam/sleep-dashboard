@@ -48,29 +48,37 @@ if selected_person =='Все':
 else: filtered_df=df[df['name']== selected_person]
 
 st.title("😴 Sleep Dashboard")
+st.caption("🌙 Сон - это важно")
 
 # KPI
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 avg_sleep = filtered_df['sleep'].mean()
 best__sleep = filtered_df['sleep'].max()
 worst_sleep = filtered_df['sleep'].min()
 #std_sleep = df.groupby('name')['sleep'].std()
 #deficit = df.assign(deficit=df['sleep']-7).groupby('name')['deficit'].sum()
 sleep_deficit = (filtered_df['sleep'] -7).sum()
+Sleep_score = 100
+Sleep_score -= abs(filtered_df['sleep']-7).mean()*12
+Sleep_score -= filtered_df['sleep'].std() * 5
+Sleep_score = max(0, min(100, Sleep_score))
 
 #st.metric("Средний сон Юля", f"{avg_sleep['Юля']:.2f}")
 #st.metric("Средний сон Даша", f"{avg_sleep['Даша']:.2f}")
 with col1:
-    st.metric("Средний сон",f"{avg_sleep:.2f} ч")
+    st.metric("💤 Средний сон",f"{avg_sleep:.2f} ч")
 
 with col2:
-    st.metric("Лучшая ночь",f"{best__sleep:.1f} ч")
+    st.metric("💫 Лучшая ночь",f"{best__sleep:.1f} ч")
 
 with col3:
-    st.metric("Худшая ночь",f"{worst_sleep:.1f} ч")
+    st.metric("😵 Худшая ночь",f"{worst_sleep:.1f} ч")
 
 with col4:
-    st.metric("Дефицит сна",f"{sleep_deficit:.1f} ч")
+    st.metric("🥱 Дефицит сна",f"{sleep_deficit:.1f} ч")
+
+with col4:
+    st.metric("✳ Качество сна",f"{Sleep_score:.0f}/100")
 
 st.write("___")
 
