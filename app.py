@@ -91,11 +91,45 @@ fig.add_hline(y=7)
 st.plotly_chart(fig, width='stretch')
 
 # Календарь сна (heatmap)
-st.subheader("🗓️ Календарь сна")
+#st.subheader("🗓️ Календарь сна")
 
-fig2 = px.density_heatmap(filtered_df, x = 'date', y ='name', z = 'sleep', color_continuous_scale="RdYlGn")
+#fig2 = px.density_heatmap(filtered_df, x = 'date', y ='name', z = 'sleep', color_continuous_scale="RdYlGn")
 
-st.plotly_chart(fig2, width='stretch')
+#st.plotly_chart(fig2, width='stretch')
+
+# Дневник сна
+st.subheader("🗓️ Дневник сна")
+
+calendar_df = filtered_df.copy()
+calendar_df['quality'] = calendar_df['sleep'].apply(
+    lambda x:
+    "🟢 Хорошо" if x >= 7
+    else "🟡 Нормально" if x >= 6
+    else"🔴 Недосып"
+)
+
+fig_calendar = px.scatter(
+    calendar_df,
+    x ='date',
+    y = 'name',
+    color = 'quality',
+    size='sleep',
+    hover_data = ['sleep'])
+
+st.plotly_chart(fig_calendar, width='stretch')
+
+# тепловая карта
+st.subheader("🌡️ Теповая карта сна")
+
+heatmap_df=filtered_df.pivot_table(
+    index='name',
+    columns='date',
+    values='sleep'
+)
+
+fig_heatmap = px.imshow(heatmap_df, aspect='auto', color_continuous_scale="RdYlGn")
+
+st.plotly_chart(fig_heatmap, width='stretch')
 
 # Сравнение
 st.subheader("⚖️ Сравнение")
