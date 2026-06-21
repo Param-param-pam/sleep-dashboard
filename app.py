@@ -59,14 +59,14 @@ st.subheader("📈 Тренд сна")
 fig = px.line(df, x='date', y='sleep', color = 'name', markers=True)
 fig.add_hline(y=7.4)
 
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width='stretch')
 
 # Календарь сна (heatmap)
 st.subheader("🗓️ Календарь сна")
 
 fig2 = px.density_heatmap(df, x = 'date', y ='name', z = 'sleep', color_continuous_scale="RdYlGn")
 
-st.plotly_chart(fig2, use_container_width=True)
+st.plotly_chart(fig2, width='stretch')
 
 # Сравнение
 st.subheader("⚖️ Сравнение")
@@ -94,7 +94,7 @@ forecast = pd.DataFrame(forecast, columns=['day', 'name', 'sleep'])
 fig3 = px.line(forecast, x='day', y='sleep', color='name', markers=True)
 fig3.add_hline(y=8)
 
-st.plotly_chart(fig3, use_container_width=True)
+st.plotly_chart(fig3, width='stretch')
 
 # Таблица
 st.subheader("📋 Табличка")
