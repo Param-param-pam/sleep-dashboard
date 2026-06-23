@@ -116,6 +116,7 @@ fig_calendar = px.scatter(
     x ='date',
     y = 'name',
     color = 'quality',
+    color_discrete_map = {"Недосып":"red", "Нормально":"gold", "Хорошо":"green"},
     size='sleep',
     hover_data = ['sleep'])
 
