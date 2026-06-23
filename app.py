@@ -106,9 +106,9 @@ st.subheader("🗓️ Дневник сна")
 calendar_df = filtered_df.copy()
 calendar_df['quality'] = calendar_df['sleep'].apply(
     lambda x:
-    "🟢 Хорошо" if x >= 7.5
-    else "🟡 Нормально" if x >= 6
-    else"🔴 Недосып"
+    "Хорошо" if x >= 7.5
+    else "Нормально" if x >= 6
+    else"Недосып"
 )
 
 fig_calendar = px.scatter(
