@@ -61,9 +61,9 @@ best__sleep = filtered_df['sleep'].max()
 worst_sleep = filtered_df['sleep'].min()
 #std_sleep = df.groupby('name')['sleep'].std()
 #deficit = df.assign(deficit=df['sleep']-7).groupby('name')['deficit'].sum()
-sleep_deficit = (filtered_df['sleep'] -7).sum()
+sleep_deficit = (filtered_df['sleep'] -7.5).sum()
 Sleep_score = 100
-Sleep_score -= abs(filtered_df['sleep']-7).mean()*12
+Sleep_score -= abs(filtered_df['sleep']-7.5).mean()*12
 Sleep_score -= filtered_df['sleep'].std() * 5
 Sleep_score = max(0, min(100, Sleep_score))
 
@@ -107,7 +107,7 @@ st.subheader("🗓️ Дневник сна")
 calendar_df = filtered_df.copy()
 calendar_df['quality'] = calendar_df['sleep'].apply(
     lambda x:
-    "🟢 Хорошо" if x >= 7
+    "🟢 Хорошо" if x >= 7.5
     else "🟡 Нормально" if x >= 6
     else"🔴 Недосып"
 )
