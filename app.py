@@ -37,15 +37,23 @@ data = [
     ['22.06.2026','Юля',8.5,8.5],
     ['22.06.2026','Даша',7,7],
     ['23.06.2026','Юля',5.5,5.5],
-    ['23.06.2026','Даша',7.5,8]
+    ['23.06.2026','Даша',7.5,8],
+    ['24.06.2026','Юля',6,6],
+    ['24.06.2026','Даша',6,6],
+    ['25.06.2026','Юля',8,8],
+    ['25.06.2026','Даша',7,7],
+    ['26.06.2026','Юля',7,7.5],
+    ['26.06.2026','Даша',7.5,8],
+    ['27.06.2026','Юля',7,7.5],
+    ['27.06.2026','Даша',8,8]
     ]
 
 df = pd.DataFrame(data, columns=['date','name','min','max'])
 df['sleep'] = (df['min']+df['max'])/2
 df['date']=pd.to_datetime(df['date'],format = '%d.%m.%Y')
 
-st.sidebar.header('Фильтры')
-selected_person = st.sidebar.selectbox("Кто", ['Все','Юля','Даша'])
+st.sidebar.header('⚙️ Фильтры')
+selected_person = st.sidebar.selectbox("👤 Кто", ['Все','Юля','Даша'])
 
 if selected_person =='Все':
     filtered_df = df.copy()
@@ -123,7 +131,7 @@ fig_calendar = px.scatter(
 st.plotly_chart(fig_calendar, width='stretch')
 
 # тепловая карта
-st.subheader("🌡️ Теповая карта сна")
+st.subheader("🌡️ Тепловая карта сна")
 
 heatmap_df=filtered_df.pivot_table(
     index='name',
