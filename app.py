@@ -56,7 +56,7 @@ st.sidebar.header('⚙️ Фильтры')
 selected_person = st.sidebar.selectbox("Кто💤", ['Все','Юля','Даша'])
 selected_period = st.sidebar.radio("📅 Период",[
     "Все время",
-    "Последние 7 дней"
+    "Последние 7 дней",
     "Последние 14 дней",
     "Последние 30 дней",
     "Свой период"
