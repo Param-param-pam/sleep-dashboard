@@ -89,12 +89,12 @@ st.caption("🌙 Сон - это важно")
 
 # INFO
 col6, col7,col8 = st.columns(3)
-with col6: st.info(f"Данные с **{df['date'].min().strftime('%d.%m')}**"
-                   f"по**{df['date'].max().strftime('%d.%m')}**")
+with col6: st.info(f"Данные с **{df['date'].min().strftime('%d.%m')}**" 
+                   f"по **{df['date'].max().strftime('%d.%m')}**")
     
-with col7: st.info(f"Всего записей ** {len(df)}**")
+with col7: st.info(f"Всего записей **{len(df)}**")
 
-with col8: st.info(f"Последняя запись {df['date'].max().strftime('%d.%m')}**")
+with col8: st.info(f"Последняя запись **{df['date'].max().strftime('%d.%m')}**")
 
 # KPI
 col1, col2, col3, col4, col5 = st.columns(5)
