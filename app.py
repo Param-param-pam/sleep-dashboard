@@ -47,7 +47,19 @@ data = [
     ['27.06.2026','Юля',5.5,5.5],
     ['27.06.2026','Даша',8,8],
     ['28.06.2026','Юля',6,6],
-    ['28.06.2026','Даша',8,8.5]
+    ['28.06.2026','Даша',8,8.5],
+    ['29.06.2026','Юля',7,7],
+    ['29.06.2026','Даша',7,7.5],
+    ['30.06.2026','Юля',5,5],
+    ['30.06.2026','Даша',4.5,4.5],
+    ['01.07.2026','Юля',4,4],
+    ['01.07.2026','Даша',6.5,6.5],
+    ['02.07.2026','Юля',4,4],
+    ['02.07.2026','Даша',4,4],
+    ['03.07.2026','Юля',4.5,4.5],
+    ['03.07.2026','Даша',6,6],
+    ['04.07.2026','Юля',8,8],
+    ['04.07.2026','Даша',7,7.5]
     ]
 
 df = pd.DataFrame(data, columns=['date','name','min','max'])
@@ -77,9 +89,13 @@ elif selected_period == "Последние 14 дней":
 elif selected_period == "Последние 30 дней":
     filtered_df=filtered_df[filtered_df['date'] >=last_date - pd.Timedelta(days = 29)]
 elif selected_period == "Свой период":
-    start_day, end_date = st.sidebar.date_input(
+    #start_day, end_date = st.sidebar.date_input(
+    data_range = st.sidebar.date_input(
         "Выбирай период",
         value =(filtered_df['date'].min(), filtered_df['date'].max()))
+    
+    if len(data_range) == 2:
+        start_day, end_date = data_range
 
     filtered_df = filtered_df[
         (filtered_df['date']>=pd.to_datetime(start_day)) &
