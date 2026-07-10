@@ -79,7 +79,7 @@ df['sleep'] = (df['min']+df['max'])/2
 df['date']=pd.to_datetime(df['date'],format = '%d.%m.%Y')
 
 st.sidebar.header('⚙️ Фильтры')
-selected_person = st.sidebar.selectbox("Кто", ['Все','🐘 Юля','Даша'])
+selected_person = st.sidebar.selectbox("Кто", ['Все','Юля','Даша'])
 selected_period = st.sidebar.radio("📅 Период",[
     "Все время",
     "Последние 7 дней",
