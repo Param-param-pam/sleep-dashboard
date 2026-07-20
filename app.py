@@ -152,7 +152,7 @@ avg_sleep = filtered_df['sleep'].mean()
 best__sleep = filtered_df['sleep'].max()
 worst_sleep = filtered_df['sleep'].min()
 sleep_deficit = (filtered_df['sleep'] -7.5).sum()
-best ='19.07.2026'
+best ='19 июля'
 
 #Sleep_score = 100
 avg_deficit = abs(filtered_df['sleep']-7.5).mean()
