@@ -138,16 +138,16 @@ st.title("😴 Sleep Dashboard")
 st.caption("🌙 Сон - это важно")
 
 # INFO
-col6, col7,col8 = st.columns(3)
-with col6: st.info(f"Данные с **{df['date'].min().strftime('%d.%m')}**"
+col7, col8,col9 = st.columns(3)
+with col7: st.info(f"Данные с **{df['date'].min().strftime('%d.%m')}**"
                     f"по **{df['date'].max().strftime('%d.%m')}**")
     
-with col7: st.info(f"Всего записей **{len(df)}**")
+with col8: st.info(f"Всего записей **{len(df)}**")
 
-with col8: st.info(f"Последняя запись **{df['date'].max().strftime('%d.%m')}**")
+with col9: st.info(f"Последняя запись **{df['date'].max().strftime('%d.%m')}**")
 
 # KPI
-col1, col2, col3, col4, col5, col9 = st.columns(6)
+col1, col2, col3, col4, col5, col6 = st.columns(6)
 avg_sleep = filtered_df['sleep'].mean()
 best__sleep = filtered_df['sleep'].max()
 worst_sleep = filtered_df['sleep'].min()
@@ -176,7 +176,7 @@ with col4:
 with col4:
     st.metric("✳ Качество сна",f"{sleep_score:.0f}/100")
 
-with col9:
+with col6:
     st.metric("💝 Самая лучшая ночь ",f"{best}")
 
 st.write("___")
