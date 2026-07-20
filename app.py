@@ -86,8 +86,12 @@ data = [
     ['16.07.2026','Даша',4.5,4.5],
     ['17.07.2026','Юля',5,5.5],
     ['17.07.2026','Даша',7,7],
-    ['18.07.2026','Юля',7,7],
-    ['18.07.2026','Даша',7,7],
+    ['18.07.2026','Юля',6,6],
+    ['18.07.2026','Даша',6,6],
+    ['19.07.2026','Юля',5,5],
+    ['19.07.2026','Даша',5,5],
+    ['20.07.2026','Юля',6.5,6.5],
+    ['20.07.2026','Даша',7,7]
     ]
 
 df = pd.DataFrame(data, columns=['date','name','min','max'])
@@ -143,11 +147,12 @@ with col7: st.info(f"Всего записей **{len(df)}**")
 with col8: st.info(f"Последняя запись **{df['date'].max().strftime('%d.%m')}**")
 
 # KPI
-col1, col2, col3, col4, col5 = st.columns(5)
+col1, col2, col3, col4, col5, col9 = st.columns(6)
 avg_sleep = filtered_df['sleep'].mean()
 best__sleep = filtered_df['sleep'].max()
 worst_sleep = filtered_df['sleep'].min()
 sleep_deficit = (filtered_df['sleep'] -7.5).sum()
+best ='19.07.2026'
 
 #Sleep_score = 100
 avg_deficit = abs(filtered_df['sleep']-7.5).mean()
@@ -170,6 +175,9 @@ with col4:
 
 with col4:
     st.metric("✳ Качество сна",f"{sleep_score:.0f}/100")
+
+with col9:
+    st.metric("💝 Самая лучшая ночь ",f"{best}")
 
 st.write("___")
 
