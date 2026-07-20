@@ -173,7 +173,7 @@ with col3:
 with col4:
     st.metric("🥱 Дефицит сна",f"{sleep_deficit:.1f} ч")
 
-with col4:
+with col5:
     st.metric("✳ Качество сна",f"{sleep_score:.0f}/100")
 
 with col6:
