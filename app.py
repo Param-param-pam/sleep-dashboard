@@ -177,7 +177,7 @@ with col4:
     st.metric("✳ Качество сна",f"{sleep_score:.0f}/100")
 
 with col6:
-    st.metric("💝 Самая лучшая ночь ", best_data.strftime("%d.%m"))
+    st.metric("💝 Самая лучшая ночь ", best_data)
 
 st.write("___")
 
