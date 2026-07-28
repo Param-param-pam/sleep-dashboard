@@ -102,8 +102,8 @@ data = [
     ['24.07.2026','Даша',6.5,7],
     ['25.07.2026','Юля',5,5],
     ['25.07.2026','Даша',5,5],
-    ['26.07.2026','Юля',4,4],
-    ['26.07.2026','Даша',6,6],
+    ['26.07.2026','Юля',6,6],
+    ['26.07.2026','Даша',4,4],
     ['27.07.2026','Юля',6.5,6.5],
     ['27.07.2026','Даша',7,7],
     ['28.07.2026','Юля',6.5,6.5],
@@ -167,11 +167,11 @@ col1, col2, col3, col4, col5, col6 = st.columns(6)
 avg_sleep = filtered_df['sleep'].mean()
 best__sleep = filtered_df['sleep'].max()
 worst_sleep = filtered_df['sleep'].min()
-sleep_deficit = (filtered_df['sleep'] -7.5).sum()
+sleep_deficit = (filtered_df['sleep'] -7).sum()
 best_data ='19 июля'
 
 #Sleep_score = 100
-avg_deficit = abs(filtered_df['sleep']-7.5).mean()
+avg_deficit = abs(filtered_df['sleep']-7).mean()
 sleep_variability = filtered_df['sleep'].std()
 sleep_score = (100 - avg_deficit*12 - sleep_variability*5 )
 
@@ -201,7 +201,7 @@ st.write("___")
 st.subheader("📈 Тренд сна")
 
 fig = px.line(filtered_df, x='date', y='sleep', color = 'name', markers=True)
-fig.add_hline(y=7.5)
+fig.add_hline(y=7)
 
 st.plotly_chart(fig, width='stretch')
 
@@ -218,8 +218,8 @@ st.subheader("🗓️ Дневник сна")
 calendar_df = filtered_df.copy()
 calendar_df['quality'] = calendar_df['sleep'].apply(
     lambda x:
-    "Хорошо" if x >= 7.5
-    else "Нормально" if x >= 6
+    "Хорошо" if x >= 7
+    else "Нормально" if x >= 5.5
     else"Недосып"
 )
 
@@ -271,7 +271,7 @@ for name in ['Юля', 'Даша']:
 forecast = pd.DataFrame(forecast, columns=['day', 'name', 'sleep'])
 
 fig3 = px.line(forecast, x='day', y='sleep', color='name', markers=True)
-fig3.add_hline(y=7.5)
+fig3.add_hline(y=7)
 
 st.plotly_chart(fig3, width='stretch')
 
