@@ -196,7 +196,7 @@ with col2:
     st.metric("💫 Лучшая ночь",f"{best__sleep:.1f} ч")
 
 with col3:
-    st.metric("😵 Худшая ночь",f"{worst_sleep:.1f} ч")
+    st.metric("😵 Худшая ночь",f"{worst_sleep:.1f} ч 🥺")
 
 with col4:
     st.metric("🥱 Дефицит сна",f"{sleep_deficit:.1f} ч")
